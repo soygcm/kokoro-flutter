@@ -1,3 +1,4 @@
+import 'package:fimber/fimber.dart';
 import 'package:kokoro/example/externals/position_external.dart';
 import 'package:test/test.dart';
 
@@ -39,9 +40,7 @@ void main() {
       // });
 
       app.handle.onAppear();
-      print("onAppear test");
       final firstState = await app.state.first;
-      print("firstState = " + firstState.toString());
       final secondState = await app.state.first;
 
       expect(firstState.y, 1);
@@ -50,23 +49,20 @@ void main() {
 
     test('using externals leak', () async {
       Function()? some = () {
-        print("Doing");
+        Fimber.d("Doing");
       };
 
       final app = PositionApp();
       app.externals = PositionExternalsLeak(() {
         some!();
       });
-      // final some = features.state.((event) {
-      //   print(event);
-      // });
+
       some = null;
       some = () {
-        print("Doing");
+        Fimber.d("Doing2");
       };
       app.handle.onAppear();
 
-      print("onAppear test");
       final firstState = await app.state.first;
 
       final secondState = await app.state.first;

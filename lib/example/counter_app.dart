@@ -48,9 +48,7 @@ class PositionApp extends Kokoro<Position, PositionEvents> {
       }, onAppear: () async {
         final amount = await externals.getIncrementalAmount();
         dispatch(MoveUp(amount));
-        print("MoveUp 1");
         await Future.delayed(const Duration(seconds: 1));
-        print("MoveUp 2");
         dispatch(MoveUp());
       });
 

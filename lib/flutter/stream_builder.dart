@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:kokoro/kokoro.dart';
+import 'package:fimber/fimber.dart';
 
 typedef AsyncWidgetBuilderKokoro<T> = Widget Function(
     BuildContext context, T data);
@@ -27,7 +28,7 @@ extension FlutterKokoro<S, E> on Kokoro<S, E> {
         AsyncSnapshot<T> snapshot,
       ) {
         if (log) {
-          print("------ stateBuilder ${snapshot.data ?? initialData}");
+          Fimber.d("------ stateBuilder ${snapshot.data ?? initialData}");
         }
         return builder(context, snapshot.data ?? initialData);
       },
@@ -47,7 +48,7 @@ extension FlutterKokoro<S, E> on Kokoro<S, E> {
       initialData: initialData,
       stream: state.map(map).distinct((one, two) {
         if (log) {
-          print("------ streamBuilder.equals $one $two ${one == two}");
+          Fimber.d("------ streamBuilder.equals $one $two ${one == two}");
         }
         return one == two;
       }),
@@ -56,7 +57,7 @@ extension FlutterKokoro<S, E> on Kokoro<S, E> {
         AsyncSnapshot<T> snapshot,
       ) {
         if (log) {
-          print("------ streamBuilder ${snapshot.data ?? initialData}");
+          Fimber.d("------ streamBuilder ${snapshot.data ?? initialData}");
         }
         return builder(context, snapshot);
       },
