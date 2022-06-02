@@ -8,6 +8,6 @@ State manager inspired by Redux
 
 ____
 
-[![Nextern](https://nextern.com/)](https://nextern.com/wp-content/uploads/2018/09/nextern-mainlogo-200px-2x.png)
+[![Nextern](https://nextern.com/wp-content/uploads/2018/09/nextern-mainlogo-200px-2x.png)](https://nextern.com/)
 
 
